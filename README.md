@@ -35,6 +35,32 @@ Esta es la versión definitiva y más potente. Fusiona todas las capacidades pre
 # 4. Sigue las instrucciones y REINICIA tu PC al finalizar.
 ```
 
+> **Si Windows bloquea la ejecución** (error de "script no firmado digitalmente"), abre PowerShell como Administrador y ejecuta:
+> ```powershell
+> powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1"
+> ```
+
+### Parámetros Disponibles
+
+| Parámetro | Tipo | Descripción |
+|:---|:---|:---|
+| `-DryRun` | Switch | **Simulación sin cambios reales.** Muestra todo lo que haría sin borrar nada. Ideal para auditar antes de ejecutar. |
+| `-LogPath` | String | Ruta personalizada para el archivo de log. Por defecto: `%TEMP%\Autodesk-Nuke-v6.3_FECHA.log` |
+| `-SkipValidation` | Switch | Salta las validaciones iniciales (espacio en disco, antivirus, presencia de Autodesk). Solo para testing. |
+| `-QuietMode` | Switch | Reduce la salida de consola. Solo escribe al archivo de log. |
+
+**Ejemplos de uso:**
+```powershell
+# Simulación completa (no borra nada)
+powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1" -DryRun
+
+# Ejecución real con log personalizado
+powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1" -LogPath "C:\limpieza.log"
+
+# Ejecución silenciosa sin validaciones
+powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1" -SkipValidation -QuietMode
+```
+
 ### Opción B (Clásica): Usa v2.0.2 (ESTABLE Silenciosa)
 Si prefieres el script original que no hace preguntas y ejecuta una limpieza rápida y directa (el que funcionó en un 95% de los casos históricos), usa el archivo Legacy adjunto en la raíz:
 ```powershell
