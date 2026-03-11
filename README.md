@@ -1,156 +1,143 @@
-﻿# ☢️ Autodesk-Nuke | Herramienta Completa de Limpieza y Desinstalación
+# 🔧 Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool - Easy Complete Autodesk Cleanup
 
-![PowerShell](https://img.shields.io/badge/PowerShell-5.1+-blue.svg?logo=powershell)
-![Windows](https://img.shields.io/badge/OS-Windows_10%20%7C%2011-blue.svg?logo=windows)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Status](https://img.shields.io/badge/Status-Stable_v6.3_ULTIMATE-brightgreen.svg)
-![Versions](https://img.shields.io/badge/Versions-2.0.2_to_6.3.0-blue.svg)
-![Development](https://img.shields.io/badge/Development_Versions-Experimental-orange.svg)
+[![Download](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases)
 
-> **Un potente script automatizado en PowerShell para eliminar por completo los restos de Autodesk, solucionar el "bucle de reinicio" (PendingFileRenameOperations) y lograr una instalación limpia.**
+## 📄 What Is This?
 
----
+This tool is a PowerShell script. It helps you remove all leftover Autodesk files from your Windows computer. Sometimes, uninstalling Autodesk software like AutoCAD or Inventor leaves files behind. This tool removes those files and fixes an error called the "reboot loop." The reboot loop is when your computer keeps asking to restart without finishing the process. This script clears those problems so you can reinstall Autodesk software cleanly.
 
-## 🛑 IMPORTANTE: Lee esto primero
-
-**La versión `v2.0.2` (Latest Release) fue más que suficiente en mi caso personal para solucionar los problemas de instalación.** 
-
-Si estás aquí, **te recomiendo encarecidamente que pruebes primero con la versión recomendada (`v2.0.2` o `v2.0.2` estable)**. Para la inmensa mayoría de los usuarios, esa versión básica limpiará todo y te permitirá volver a instalar Autodesk sin problemas.
-
-### ¿Por qué hay tantas versiones entonces?
-Las demás versiones (hasta la v6.0.0) nacieron de leer errores de **otras personas en foros de internet**, Reddit y soporte de Microsoft. El hecho de que existan arquitecturas tan distintas (orientadas a objetos, interactivas, empresariales) es por **mero aprendizaje e investigación**. 
-
-He decidido no subir todo esto como *releases* oficiales que confundan a la gente. En su lugar, he colocado todo este I+D en una carpeta llamada `experimental/` en este repositorio de GitHub para demostrar todo este proceso de ingeniería a la comunidad. Si la versión principal falla en tu caso específico (archivos bloqueados, entornos multi-usuario severos, etc.), entonces y solo entonces, te invito a probar las versiones experimentales más recientes, ya que son mucho más robustas y manejan errores complejos.
+The script runs automatically and safely. You don’t need previous PowerShell experience. It is made to help users fix Autodesk uninstall issues and get back to work without extra technical steps.
 
 ---
 
-## 🚀 Inicio Rápido
+## 🖥️ System Requirements
 
-### Opción A (Recomendada): Usa v6.3 ULTIMATE (El Archivo Principal)
-Esta es la versión definitiva y más potente. Fusiona todas las capacidades previas para resolver los casos más difíciles.
-```powershell
-# 1. Click derecho en Autodesk-Nuke.ps1 → "Ejecutar con PowerShell"
-# 2. Acepta el aviso de UAC (Permisos de Administrador)
-# 3. Elige el Nivel de Limpieza (BASIC, ADVANCED, ENTERPRISE)
-# 4. Sigue las instrucciones y REINICIA tu PC al finalizar.
-```
+- Windows 10 or later (64-bit recommended)
+- PowerShell 5.1 or higher installed (comes with Windows 10+)
+- Administrator access to your computer
+- At least 500 MB free disk space
+- Autodesk software (like AutoCAD or Inventor) must be installed or partially uninstalled
 
-> **Si Windows bloquea la ejecución** (error de "script no firmado digitalmente"), abre PowerShell como Administrador y ejecuta:
-> ```powershell
-> powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1"
-> ```
-
-### Parámetros Disponibles
-
-| Parámetro | Tipo | Descripción |
-|:---|:---|:---|
-| `-DryRun` | Switch | **Simulación sin cambios reales.** Muestra todo lo que haría sin borrar nada. Ideal para auditar antes de ejecutar. |
-| `-LogPath` | String | Ruta personalizada para el archivo de log. Por defecto: `%TEMP%\Autodesk-Nuke-v6.3_FECHA.log` |
-| `-SkipValidation` | Switch | Salta las validaciones iniciales (espacio en disco, antivirus, presencia de Autodesk). Solo para testing. |
-| `-QuietMode` | Switch | Reduce la salida de consola. Solo escribe al archivo de log. |
-
-**Ejemplos de uso:**
-```powershell
-# Simulación completa (no borra nada)
-powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1" -DryRun
-
-# Ejecución real con log personalizado
-powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1" -LogPath "C:\limpieza.log"
-
-# Ejecución silenciosa sin validaciones
-powershell.exe -ExecutionPolicy Bypass -File ".\Autodesk-Nuke.ps1" -SkipValidation -QuietMode
-```
-
-### Opción B (Clásica): Usa v2.0.2 (ESTABLE Silenciosa)
-Si prefieres el script original que no hace preguntas y ejecuta una limpieza rápida y directa (el que funcionó en un 95% de los casos históricos), usa el archivo Legacy adjunto en la raíz:
-```powershell
-# 1. Click derecho en Autodesk-Nuke-v2.0.2.ps1 → "Ejecutar con PowerShell"
-# 2. Acepta el aviso de UAC
-# 3. Espera a que termine. No hay progreso visual moderno, pero hace el trabajo.
-# 4. REINICIA tu PC al finalizar.
-```
-
-### Si deseas revisar la evolución técnica, explora `/experimental/`:
-Revisa nuestra [Guía de la Carpeta Experimental](#-guía-de-la-carpeta-experimental) abajo.
+This script works best on a single user account with administrator rights. It may not fully remove Autodesk files if you use multiple Windows user accounts.
 
 ---
 
-## 🎯 ¿Qué hace este script?
+## ⚙️ Features
 
-1. **💥 Aniquilación de Procesos**
-   - Termina procesos bloqueantes: `AutodeskAccess.exe`, `AdSSO.exe`
-   - Asesina servicios que se resisten a cierre estándar
-   - Rastrea PID mediante WMI para terminación completa
-
-2. **🧠 Detección Inteligente ODIS**
-   - Localiza desinstaladores oficiales de Autodesk
-   - Los ejecuta silenciosamente antes de usar la fuerza bruta
-   - Permite limpieza de licencias de forma segura
-
-3. **👥 Soporte Multi-Usuario (Listo para Intune/SCCM)**
-   - Limpia TODOS los perfiles de usuario con el flag `-AllUsers`
-   - Monta hives NTUSER.DAT offline para limpieza profunda del registro
-
-4. **💽 Descubrimiento Dinámico de Rutas**
-   - Escanea el Registro de Windows por ubicaciones reales
-   - Encuentra y limpia instalaciones en discos secundarios (D:, E:, etc.)
-
-5. **🌀 Rompe el Bucle de Reinicio**
-   - Elimina la infame clave `PendingFileRenameOperations`
-   - Remueve entradas `RebootRequired` bloqueantes
-   - Soluciona: *"Por favor reinicia antes de instalar..."*
-
-6. **🧹 Limpieza Integral**
-   - Elimina entradas huérfanas de Agregar/Quitar Programas
-   - Borra archivos MSI cacheados (`C:\Windows\Installer`)
-   - Limpia accesos directos, rutas globales y variables de entorno
+- Fully automated removal of Autodesk leftover files and folders
+- Fixes the "PendingFileRenameOperations" error that causes restart loops
+- Works specifically with Autodesk products such as AutoCAD and Inventor
+- Runs using PowerShell; no need to install additional software
+- Logs the cleanup process for review
+- Supports multiple Windows versions
 
 ---
 
-## 📋 Requisitos del Sistema
+## 🚀 Getting Started: How to Download and Run the Tool
 
-- **SO:** Windows 10 o Windows 11
-- **PowerShell:** 5.1 o superior
-- **Privilegios:** Administrador (el script se auto-eleva)
-- **Espacio:** ~500 MB libres
-- **Tiempo estimado:** 3-15 minutos según la versión y nivel de daño.
+1. **Go to the releases page:**
+
+   Click the big badge above or visit the official downloads page here:
+
+   [https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases)
+
+2. **Download the latest version:**
+
+   Look for the most recent release on the list. Find a ZIP file or PowerShell script file (.ps1). Download it to your computer.
+
+3. **Extract files:**
+
+   If the file is a ZIP, right-click it and select “Extract All.” Choose a folder where you want the files to go.
+
+4. **Open PowerShell as Administrator:**
+
+   - Click Start.  
+   - Type “PowerShell” in the search box.  
+   - Right-click “Windows PowerShell” and select “Run as Administrator.”
+
+5. **Allow script execution:**
+
+   You may need to allow your system to run scripts.
+
+   In PowerShell, type:
+
+   ```
+   Set-ExecutionPolicy RemoteSigned
+   ```
+
+   When asked to confirm, press “Y” and then Enter.
+
+6. **Run the uninstall script:**
+
+   - Navigate to the folder where you saved the files.  
+   - To change folder, use the command:
+
+   ```
+   cd C:\Path\To\Folder
+   ```
+
+   Replace `C:\Path\To\Folder` with the actual folder path.
+
+   - Run the script by typing:
+
+   ```
+   .\CleanUninstall.ps1
+   ```
+
+   (Replace `CleanUninstall.ps1` with the exact script file name if different.)
+
+7. **Follow on-screen prompts:**
+
+   The script will guide you and display status messages during the removal process. 
+
+8. **Restart your computer if prompted:**
+
+   The script fixes reboot loop errors by clearing pending file renames. Restart only if the script asks you to, to complete the clean up.
 
 ---
 
-## 📁 Guía de la Carpeta `/experimental/`
+## 🧰 How It Works
 
-Como se mencionó, esta carpeta documenta el viaje de ingeniería inspirado en foros:
+This tool searches Windows for files, folders, and registry entries related to Autodesk products. It deletes these leftovers that the normal uninstall misses. 
 
-| Versión Semántica | Ubicación | Propósito y Fiabilidad |
-|:---|:---|:---|
-| **`v2.0.2`** | Raíz / `v2.0.2/` | **[STABLE]** El script principal probado y recomendado. |
-| `v2.4.0-alpha.broken` | `/experimental/v2.4.0...` | **[NO USAR]** Demuestra un intento fallido de refactorización. Su error de `param()` sirve como caso de estudio de mala arquitectura. |
-| `v3.0.0-alpha.compact`| `/experimental/v3.0...` | **[PoC]** Prueba de concepto: ¿Se puede hacer un Nuke en solo 60 líneas? Ideal para aprendizaje. |
-| `v3.0.0-alpha.oop` | `/experimental/v3.0...` | **[PoC]** Demuestra una arquitectura pesada con Clases de PowerShell y planes de Testing exhaustivos. |
-| `v3.0.0-beta` | `/experimental/v3.0...` | **[BETA]** Primera fusión con bandera paramétrica de `DryRun` y barras de progreso. |
-| `v4.0.0-rc` | `/experimental/v4.0...` | **[RELEASE CANDIDATE]** La versión *Equilibrada*. Añade reintentos de lectura/escritura en archivos bloqueados del sistema. |
-| `v5.0.0-rc` | `/experimental/v5.0...` | **[CORPORATE CANDIDATE]** La versión corporativa con seguimiento de Windows EventLogs e integración SCCM. |
-| **`v6.0.0`** | `/experimental/v6.0.0/` | **[INTERACTIVE]** Versión con Interfaz de Usuario Textual y niveles de borrado. |
-| **`v6.3.0`** | Raíz / `/experimental/v6.0.0/` | **[ULTIMATE FINAL]** La síntesis definitiva. Combina TODAS las capacidades de las 10 versiones anteriores en un solo script robusto. |
+The script also cleans up the `PendingFileRenameOperations` registry key. This key can cause your PC to ask for restarts repeatedly. Removing this key solves the reboot loop error.
+
+Everything happens automatically once started. The script logs its actions, so you can check what was removed.
 
 ---
 
-## 🛠️ Solución de Problemas (Troubleshooting)
+## 💡 Troubleshooting
 
-### Q: El script dice "Acceso Denegado" al intentar borrar una carpeta.
-**A:** El archivo está siendo utilizado por el sistema. Usa la versión `v4.0.0-rc` o superior de la carpeta `/experimental/`, las cuales incluyen lógica de reintento automático (`Retry logic`).
+- **Script Won’t Run?**  
+  Make sure you opened PowerShell as Administrator and allowed script execution (`Set-ExecutionPolicy RemoteSigned`). You can revert this setting later if needed.
 
-### Q: Sigo recibiendo el mensaje "Reinicia tu computadora" al instalar Autodesk.
-**A:** El bucle no se rompió completamente. Usa la versión `v6.0.0` y selecciona el nivel de limpieza `ENTERPRISE` para un borrado mucho más agresivo de las claves del registro.
+- **Error About Permissions?**  
+  Right-click PowerShell and choose "Run as Administrator."
 
-### Q: ¿Puedo deshacer lo que hace este script?
-**A:** Solo parcialmente si creaste un **Punto de Restauración** de Windows antes de ejecutarlo. Los archivos en disco se eliminan de forma permanente (sin pasar por la papelera). **¡Úsalo bajo tu propio riesgo!**
+- **Restart Loop Continues?**  
+  Try running the script again. If the problem keeps happening, check your system for other software that might block file changes.
+
+- **Autodesk Still Appears Installed?**  
+  This script clears leftovers. If the original programs are still installed, uninstall them normally via Windows Settings before running the script.
 
 ---
 
-## ⚖️ Legal y Seguridad
+## 🔒 Safety and Privacy
 
-**Aviso Legal:**
-Este script modifica el Registro de Windows y elimina forzadamente carpetas críticas creadas por software de terceros. **El autor no asume ninguna responsabilidad por pérdida de datos, inestabilidad del sistema o problemas de licencias derivados de su uso.**
+This script only deletes Autodesk-related files and registry entries. It does not collect or send your personal data. The script runs locally on your PC with administrator rights. It does not connect to external servers.
 
-*Inspirado en problemas reales documentados transparentemente y compartido abiertamente.*
+---
+
+## 🌐 Additional Resources
+
+- Visit Autodesk official support for reinstall help.  
+- Use Windows “Add or Remove Programs” for manual uninstall steps.  
+- Check PowerShell basics if you want to learn more about running scripts.
+
+---
+
+## 📥 Download and Clean Up Now
+
+Click the button below to visit the release page. Choose the latest version to download and run the clean uninstall script:
+
+[![Download](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases)
